@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
     DatabaseHelper db;
-    Button login, register;
+    Button register;
     EditText username,password,passwordConf;
 
     @Override
@@ -24,18 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
         username = (EditText)findViewById(R.id.editText_usernameRegist);
         password = (EditText)findViewById(R.id.editText_passwordRegist);
         passwordConf = (EditText)findViewById(R.id.editText_passwordConfRegist);
-        login = (Button)findViewById(R.id.btn_loginRegist);
         register = (Button)findViewById(R.id.btn_registerRegist);
-
-        //login
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
-                finish();
-            }
-        });
 
         //register
         register.setOnClickListener(new View.OnClickListener() {
