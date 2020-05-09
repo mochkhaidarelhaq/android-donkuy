@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-public class MainActivity extends AppCompatActivity {
+public class AdminHomeActivity extends AppCompatActivity {
     DatabaseHelper db;
     Button logout;
     FloatingActionButton fab;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.admin_home);
 
         db = new DatabaseHelper(this);
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         Boolean checkSession = db.checkSession("ada");
         if(checkSession == false){
-            Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+            Intent loginIntent = new Intent(AdminHomeActivity.this, LoginActivity.class);
             startActivity(loginIntent);
             finish();
         }
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 Boolean updtSession = db.upgradeSession("kosong",1);
                 if(updtSession == true){
                     Toast.makeText(getApplicationContext(), "Berhasil Keluar", Toast.LENGTH_SHORT).show();
-                    Intent LoginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                    Intent LoginIntent = new Intent(AdminHomeActivity.this, LoginActivity.class);
                     startActivity(LoginIntent);
                     finish();
                 }
