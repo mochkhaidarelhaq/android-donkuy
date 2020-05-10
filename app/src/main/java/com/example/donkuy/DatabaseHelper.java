@@ -82,7 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //isidata donasi admin
-    public boolean insertData(String judul, String penerima, String alasan, String alamat, String nomortelp, String jumlah, String waktu, String foto)
+    public boolean insertData(int id, String judul, String penerima, String alasan, String alamat, String nomortelp, String jumlah, String waktu, String foto)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
