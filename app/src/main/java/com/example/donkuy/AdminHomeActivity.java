@@ -26,12 +26,16 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         logout = (Button)findViewById(R.id.btn_logout);
 
+        //floating Action Button
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Snackbar.make(coordinatorLayout, "Floating Action Button Clicked", Snackbar.LENGTH_LONG)
+            public void onClick(View view) {
+                Snackbar.make(view, "Floating Action Button Clicked", Snackbar.LENGTH_LONG)
                         .show();
+                Intent fabIntent = new Intent(AdminHomeActivity.this, TambahDonasiAdmin.class);
+                startActivity(fabIntent);
+                finish();
             }
         });
 

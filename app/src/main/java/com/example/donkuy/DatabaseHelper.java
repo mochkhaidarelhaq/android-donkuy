@@ -17,6 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE session(id integer PRIMARY KEY, login text)");
         db.execSQL("CREATE TABLE user(id integer PRIMARY KEY AUTOINCREMENT, username text, password text)");
+        db.execSQL("CREATE TABLE donasi(id integer PRIMARY KEY AUTOINCREMENT, judul text, penerima text, alasan text, alamat text, nomortelp text, jumlah text, waktu text, foto text)");
         db.execSQL("INSERT INTO session(id,login) VALUES(1,'kosong')");
     }
 
@@ -24,6 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS session");
         db.execSQL("DROP TABLE IF EXISTS user");
+        db.execSQL("DROP TABLE IF EXISTS donasi");
         onCreate(db);
     }
 
@@ -53,7 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
     }
 
-    //insert use
+    //insert user
     public boolean insertUser(String username, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -76,6 +78,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }else{
             return false;
+        }
+    }
+
+    //isidata donasi admin
+    public boolean insertData(String judul, String penerima, String alasan, String alamat, String nomortelp, String jumlah, String waktu, String foto)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("judul", judul);
+        contentValues.put("penerima", penerima);
+        contentValues.put("alasan", alasan);
+        contentValues.put("alamat", alamat);
+        contentValues.put("nomortelp", nomortelp);
+        contentValues.put("jumlah", jumlah);
+        contentValues.put("waktu", waktu);
+        contentValues.put("foto", foto);
+        Long insert = db.insert("donasi",null, contentValues);
+        if (insert == -1){
+            return false;
+        }else{
+            return true;
         }
     }
 }

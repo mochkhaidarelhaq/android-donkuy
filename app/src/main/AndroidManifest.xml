@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserHomeActivity"></activity>
+        <activity android:name=".TambahDonasiAdmin"></activity>
+        <activity android:name=".UserHomeActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".AdminHomeActivity">
